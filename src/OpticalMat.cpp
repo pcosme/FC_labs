@@ -52,28 +52,33 @@ void OpticalMat::FitDataPoints() {
 
 void OpticalMat::DrawFitRefIndex() {
 	TApplication app("app", nullptr, nullptr);
-	TCanvas *c1 = new TCanvas("c1","Refractive index points",200,10,500,300);
+	TCanvas *c1 = new TCanvas("c1","Refractive index points",200,10,800,500);
 
 	this->FitDataPoints();
 
 	ref_index_points_graph->SetTitle("Refractive index");
 	ref_index_points_graph->GetYaxis()->SetTitle("n");
 	ref_index_points_graph->GetXaxis()->SetTitle("wavelength [nm]");
+	ref_index_points_graph->Draw("A*");
+	c1->Update();
+
 	TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
 	rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-	ref_index_points_graph->Draw("A*");
 	app.Run();
 }
 
 void OpticalMat::DrawRefIndexPoints() {
 	TApplication app("app", nullptr, nullptr);
-	TCanvas *c1 = new TCanvas("c1","Refractive index points",200,10,500,300);
+	TCanvas *c1 = new TCanvas("c1","Refractive index points",200,10,800,500);
 	ref_index_points_graph->SetTitle("Refractive index");
 	ref_index_points_graph->GetYaxis()->SetTitle("n");
 	ref_index_points_graph->GetXaxis()->SetTitle("wavelength [nm]");
+	ref_index_points_graph->Draw("A*");
+	c1->Update();
+
 	TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
 	rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-	ref_index_points_graph->Draw("A*");
+
 	app.Run();
 }
 /*
