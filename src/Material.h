@@ -18,7 +18,7 @@ public:
 	Material(string fname="", Double_t fdens=0): name(fname), density(fdens){;}
 	~Material()=default;
 	string GetName() {return name;}
-	Double_t GetDensity() {return density;}
+	Double_t GetDensity() const {return density;}
 	virtual void Print();
 protected:
 	string name;

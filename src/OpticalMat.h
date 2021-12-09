@@ -32,7 +32,7 @@ public:
 	//TF1* GetFitRefIndex(); //return TF1 pointer to fit function
 	void DrawRefIndexPoints(); //draw points
 	void DrawFitRefIndex(); //draw points and function
-	void Print(); //define print for this class
+	void Print() override; //define print for this class
 
 	void GetFitResults(vector<double> &param, vector<double> &paramerror, double& chisqr);
 	void FitDataPoints();
