@@ -24,6 +24,7 @@ int main() {
 	vector<double> erro_parametros;
 	double chiquadrado=0;
 	Diamond.GetFitResults(parametros,erro_parametros,chiquadrado);
+
 	Diamond.DrawFitRefIndex();
 
 	return 0;

@@ -33,13 +33,17 @@ double OpticalMat::FitRefIndex(double* x, double* par){
 
 void OpticalMat::GetFitResults(vector<double>& param, vector<double>& paramerror, double& chisqr) {
 	chisqr = fit_results_pointer->Chi2();
+	int ndf=fit_results_pointer->Ndf();
+
+	//float adjust=sqrt(chisqr/( (ndf>1)?ndf-1:1 ) );
+	float adjust =1.0f;
 
 	const double *err= fit_results_pointer->GetErrors();
 	const double *par= fit_results_pointer->GetParams();
 
 	for(unsigned int i=0;i<fit_results_pointer->NPar();i++){
 		param.push_back(par[i]);
-		paramerror.push_back(err[i]);
+		paramerror.push_back(err[i]/adjust);
 	}
 
 }
