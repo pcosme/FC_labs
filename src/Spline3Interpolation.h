@@ -10,6 +10,7 @@
 #include "HermiteSpline.h"
 
 #include <Eigen/Core>
+#include <Eigen/Dense>
 using namespace Eigen;
 
 using namespace std;
@@ -21,7 +22,7 @@ public:
 	void Interpolate() override;
 	double Polynomial(double *x, double *par) override;
 private:
-	vector<double> K;
+	vector<double> Ksol;
 	void SolveSystem();
 	unsigned int FindInterval(double x);
 };
