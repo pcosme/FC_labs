@@ -20,6 +20,7 @@ public:
 
 	double SecantMethod(function<double(double)> func,double x0,double x1);
 	double BissectionMethod(function<double(double)> func,double xa,double xb);
+	double RegulaFalsi(function<double(double)> func,double xa,double xb);
 
 	void SetIterations(int );
 	int GetIterations() const;

@@ -33,6 +33,31 @@ double NonlinearSolver::BissectionMethod(function<double(double)> func, double x
 	b=xb;
 	for (int i = 0; i < Iterations; ++i) {
 		midpoint = 0.5*(a+b);
+		solutions.push_back(midpoint);
+		if( abs(func(midpoint))<=Tolerance || 0.5*(b-a)<=Tolerance ){
+			root=midpoint;
+			break;
+		}else{
+			if( func(midpoint)*func(a) > 0 ){
+				a=midpoint;
+			}else{
+				b=midpoint;
+			}
+		}
+	}
+	root=midpoint;
+	return root;
+}
+
+
+double NonlinearSolver::RegulaFalsi(function<double(double)> func, double xa, double xb) {
+	double a,b,midpoint= 0.5*(xa+xb),root=0;
+
+	a=xa;
+	b=xb;
+	for (int i = 0; i < Iterations; ++i) {
+		midpoint = (a*func(b)-b*func(a))/(func(b)-func(a));
+		solutions.push_back(midpoint);
 		if( abs(func(midpoint))<=Tolerance || 0.5*(b-a)<=Tolerance ){
 			root=midpoint;
 			break;
