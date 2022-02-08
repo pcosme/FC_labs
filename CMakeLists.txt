@@ -18,13 +18,17 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 
 
 
+
+
 add_executable(Ex225 main/Ex225.cpp)
 add_executable(Ex422 main/Ex422.cpp)
 add_executable(Ex454 main/Ex454.cpp)
 add_executable(Ex464 main/Ex464.cpp)
 
 add_executable(ShootingMethod main/ShootingMethod.cpp)
-
+add_executable(VanderPol main/VanderPol.cpp)
+add_executable(Duffing main/Duffing.cpp)
+add_executable(DuffingLyap main/DuffingLyaponov.cpp)
 
 file(GLOB SRC_LIB_FILES src/*.cpp)
 add_library(FC STATIC ${SRC_LIB_FILES})
@@ -52,4 +56,19 @@ target_link_libraries(Ex464 PUBLIC ROOT::Core  ROOT::MathCore ROOT::Gui)
 target_link_libraries(ShootingMethod PUBLIC FC)
 target_include_directories(ShootingMethod PRIVATE ${ROOT_INCLUDE_DIRS})
 target_link_libraries(ShootingMethod PUBLIC ROOT::Core  ROOT::MathCore ROOT::Gui)
+
+
+target_link_libraries(Duffing PUBLIC FC)
+target_include_directories(Duffing PRIVATE ${ROOT_INCLUDE_DIRS})
+target_link_libraries(Duffing PUBLIC ROOT::Core  ROOT::MathCore ROOT::Gui)
+
+
+target_link_libraries(DuffingLyap PUBLIC FC)
+target_include_directories(DuffingLyap PRIVATE ${ROOT_INCLUDE_DIRS})
+target_link_libraries(DuffingLyap PUBLIC ROOT::Core  ROOT::MathCore ROOT::Gui)
+
+
+target_link_libraries(VanderPol PUBLIC FC)
+target_include_directories(VanderPol PRIVATE ${ROOT_INCLUDE_DIRS})
+target_link_libraries(VanderPol PUBLIC ROOT::Core  ROOT::MathCore ROOT::Gui)
 
